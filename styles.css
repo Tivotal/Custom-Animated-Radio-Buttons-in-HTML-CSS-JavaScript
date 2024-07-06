@@ -1,0 +1,120 @@
+/* Created by Tivotal */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #000;
+  --color: #fff;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+}
+
+form {
+  position: relative;
+}
+
+form input {
+  display: none;
+}
+
+form label {
+  display: block;
+  width: 24px;
+  height: 24px;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), inset 0 5px 3px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 3px var(--color);
+  border-radius: 50%;
+  margin-bottom: 24px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.5, 0, 0.5, 2);
+}
+
+input:checked + label {
+  transform: scale(1.2);
+  --color: #00fffc;
+  transition-delay: 0.4s;
+}
+
+.indicator div {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  /* background: red; */
+  top: 6px;
+  left: 6px;
+  transition: transform 0.4s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  transition-delay: calc(1s * var(--delay));
+}
+
+#two:checked ~ .indicator div {
+  transform: translateY(48px);
+}
+
+#three:checked ~ .indicator div {
+  transform: translateY(96px);
+}
+
+.indicator div::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: var(--color);
+  border-radius: 50%;
+  --color: #00fffc;
+}
+
+#one:checked ~ .indicator div::before {
+  animation: anim1 0.4s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  animation-delay: calc(1s * var(--delay));
+}
+
+@keyframes anim1 {
+  from,
+  to {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-24px);
+  }
+}
+
+#two:checked ~ .indicator div::before {
+  animation: anim2 0.4s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  animation-delay: calc(1s * var(--delay));
+}
+
+@keyframes anim2 {
+  from,
+  to {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-24px);
+  }
+}
+
+#three:checked ~ .indicator div:before {
+  animation: anim3 0.4s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  animation-delay: calc(1s * var(--delay));
+}
+
+@keyframes anim3 {
+  from,
+  to {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-24px);
+  }
+}
